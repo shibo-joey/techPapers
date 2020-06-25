@@ -65,4 +65,32 @@ useEffect(() =>{
    setstate(c => c+1)
        },[decreaseState])
    ```
+   
+  - Also, you can return something to clear the useEffect function
+  ```javasccript
+    useEffect(() => {
+      const timer = setTimeout(() =>{}
+        ,1000);
+      return () => {clearTimeout(time)}
+        },[])
+  ```
+   ## useRef
+  - This is used for reference of fields. First you can create a ref, and then refer to a field you wanna it to. Then for example we can use a botton to get the inputRef.
   
+   ```jsx
+   const inputRef = useRef()
+   
+   return(
+   <input ref={inputRef} name="" value=""/>
+   
+   <Button onClick = {
+          () => {concole.log(inputRef)}}>
+          get the ref
+   </Button>
+   )
+
+   ```
+   Then you can get the console result:
+   ```bash
+   <input name="" value="">
+   ```
