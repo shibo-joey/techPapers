@@ -23,6 +23,16 @@ useEffect(() =>{
           )
 },[])
 ```
+- if we want to the function called only when some state had changed, you can pass the second argument and the function inside will only been called when the second argument's state changed. 
+
+```javascript
+useEffect(() =>{
+    fetch("url)
+          .then(
+          setState()
+          )
+},[state])
+```
  
   
   
