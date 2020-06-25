@@ -40,9 +40,9 @@ _This text_ is italic
 
 <!-- Links -->
 
-[Traversy Media](http://www.traversymedia.com)
+[Traversy Media]()
 
-[Traversy Media](http://www.traversymedia.com "Traversy Media")
+[Traversy Media]()
 
 <!-- UL -->
 
