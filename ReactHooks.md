@@ -33,6 +33,36 @@ useEffect(() =>{
           )
 },[state])
 ```
- 
+
+  ## useCallback
   
+  - useCallback is a hook that will return a memorized version of the callback function that only changes if one of its dependencies has changed.
+  
+  - For example, if one of the button was clicked, the whole page was rendered and both fucntion will be craeted. but we need to prevent it. 
+  
+  
+ ```jsx
+ const increase = () => {
+ setstate(c => c+1)
+ }
+ const decrease = () => {
+ setstate(c => c+1)
+ }
+ 
+ return(
+   <Botton onClick={increase}>
+   <Botton onClick={decrease}>
+   )
+ ```
+ 
+ - The way to prevent is to add usecall back to the functions.
+  ```jsx
+   const increase = useCallback(() => {
+   setstate(c => c+1)
+       },[increaseState])
+       
+   const increase = useCallback(() => {
+   setstate(c => c+1)
+       },[decreaseState])
+   ```
   
