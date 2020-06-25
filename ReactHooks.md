@@ -15,14 +15,14 @@
 
   When you pass an empty array to the second argument, it will acted like componentDidMount. It runs **only once after the first render.**
   
-    ```javascript
-    useEffect(() =>{
-        fetch("url)
-              .then(
-              setState()
-              )
-    },[])
-    ```
+```javascript
+useEffect(() =>{
+    fetch("url)
+          .then(
+          setState()
+          )
+},[])
+```
  
   
   
