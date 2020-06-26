@@ -1,5 +1,19 @@
 # React Hooks
 
+Those are most basic react hooks and the most easy example so that you can understand the idea fast.
+
+###useState
+###useEffect
+###useCallback
+###useRef
+###useReducer
+###useState
+###useState
+###useState
+###useState
+###useState
+
+
   ## useState
   This is the most basic one and you can use array destructuring to get the state and setState function.
   ```javascript
@@ -75,7 +89,7 @@ useEffect(() =>{
         },[])
   ```
    ## useRef
-  - This is used for reference of fields. First you can create a ref, and then refer to a field you wanna it to. Then for example we can use a botton to get the inputRef.
+  - This is used for reference of fields. First you can create a ref, and then refer to a field or component you wanna it to. Then for example we can use a botton to get the inputRef.
   
    ```jsx
    const inputRef = useRef()
@@ -84,7 +98,7 @@ useEffect(() =>{
    <input ref={inputRef} name="" value=""/>
    
    <Button onClick = {
-          () => {concole.log(inputRef)}}>
+          () => {concole.log(inputRef.current)}}>
           get the ref
    </Button>
    )
@@ -94,3 +108,34 @@ useEffect(() =>{
    ```bash
    <input name="" value="">
    ```
+   ## useReducer
+   - The situation when we use useReducer is pretty like what we use redux
+   ```jsx
+  import React, { useReducer} from "react";
+
+  function reducer(state, action) {
+    switch (action.type) {
+      case "increase":
+        return  state + 1
+      case "decrease":
+        return state - 1
+      default:
+        return state;
+    }
+  }
+
+  const App = () => {
+    const [number,dispatch] = useReducer(reducer, 0)
+    return (
+      <div>
+        <div>number :{number}</div>
+        <button onClick={() => dispatch({type: "increase"})}> increase button </button>
+        <button onClick={() => dispatch({type: "decrease"})}> decrease button </button>
+     </div>
+    );
+  };
+
+  export default App;
+   ```
+   - Basicly the reducer is listening to different types to dispatch. When you click the button, the state is going to change base on the action type.
+   
