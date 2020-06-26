@@ -7,7 +7,7 @@ Those are most basic react hooks and the most easy example so that you can under
 ###useCallback
 ###useRef
 ###useReducer
-###useState
+###useContext
 ###useState
 ###useState
 ###useState
@@ -138,4 +138,28 @@ useEffect(() =>{
   export default App;
    ```
    - Basicly the reducer is listening to different types to dispatch. When you click the button, the state is going to change base on the action type.
+   
+   ## useContext
+   - The most common usage of useContext is to create context and share the context to its child components.
+   ```jsx
+ import React, { useState, useMemo, createContext } from "react";
+   
+   const value = useMemo(() => (state, setState), [state, setState]);
+   
+   return
+        <createContext.Provider value={value}>
+          <Route path="/..."  component={...} />
+          <Route path="/..."  component={...} />
+        </createContext.Provider>
+   
+   ```
+   
+   - Then you can use the content in your child components:
+   ```jsx
+   const { user } = useContext(createContext);
+
+   ```
+   
+   
+   
    
