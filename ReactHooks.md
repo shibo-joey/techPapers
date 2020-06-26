@@ -9,9 +9,8 @@ Those are most basic react hooks and the most easy example so that you can under
 ### useReducer
 ### useContext
 ### useMemo
-### useState
-### useState
-### useState
+### useLayoutEffect
+
 
 
   ## useState
@@ -166,8 +165,8 @@ useEffect(() =>{
    
    -The caution is when recreating the function, we may need to use useCallback to the function or abstract the function outside the components.
    
-   ### Put it outside compoennt
-    ```jsx
+   ### Put it outside the compoennt
+   ```jsx
     function mulnipulate (something){
       return something
     }
@@ -177,17 +176,40 @@ useEffect(() =>{
       
       return <p>{something}</p>
     }
-   ```
+  ```
    
-   ### use usecallback
-   
+   ### Use useCallback
+
    ```jsx
-    function mulnipulate (something){
-      return something
-    }
-    
+    import {useCallback, useMemo} from 'react'
     const App = () => {
-      const something_else = useMemo(() => mulnipulate(something),[something])
+    
+      const mulnipulate = useCallback((something) => {
+          return something
+        },[])
+        
+        const something_else = useMemo(() => mulnipulate(something),[something])
+      
     }
+   ```
+   ## useLayoutEffect 
+   
+   - You can use it to find the bottom, height, left, right, top, width.... for the DOMRect of the Ref.
+   ```jsx
+   
+   useLayoutEffect(() => {
+      console.log(inputRef.current.getBoundingClientRect())
+     },[])
+     
+   const inputRef = useRef()
+   
+   return(
+   <input ref={inputRef} name="" value=""/>
+   
+   <Button onClick = {
+          () => {concole.log(inputRef.current)}}>
+          get the ref
+   </Button>
+   )
    ```
    
