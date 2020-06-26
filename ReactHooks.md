@@ -8,7 +8,7 @@ Those are most basic react hooks and the most easy example so that you can under
 ### useRef
 ### useReducer
 ### useContext
-### useState
+### useMemo
 ### useState
 ### useState
 ### useState
@@ -156,10 +156,38 @@ useEffect(() =>{
    
    - Then you can use the content in your child components:
    ```jsx
-   const { user } = useContext(createContext);
+   import {createContext} from 'react'
+   export const { user } = useContext(createContext);
 
    ```
+   ## useMemo
    
+   - The situation was most frequently used is when the component was rerendered because of changing of the state. functions inside the component was recreate or called again but actually the ouput of the function had never changed. In this situation, we need to use useMemo.
    
+   -The caution is when recreating the function, we may need to use useCallback to the function or abstract the function outside the components.
    
+   ### Put it outside compoennt
+    ```jsx
+    function mulnipulate (something){
+      return something
+    }
+    
+    const App = () => {
+      const something_else = useMemo(() => mulnipulate(something),[something])
+      
+      return <p>{something}</p>
+    }
+   ```
+   
+   ### use usecallback
+   
+   ```jsx
+    function mulnipulate (something){
+      return something
+    }
+    
+    const App = () => {
+      const something_else = useMemo(() => mulnipulate(something),[something])
+    }
+   ```
    
