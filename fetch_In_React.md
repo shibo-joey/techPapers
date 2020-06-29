@@ -21,6 +21,7 @@
 ```
 
 - ## 2. Fetch in componentDidMount with axios
+
     axios.request(config)
     axios.get(url[, config])
     axios.delete(url[, config])
@@ -30,6 +31,8 @@
     axios.put(url[, data[, config]])
     axios.patch(url[, data[, config]])
 ```jsx
+import axios from 'axios'
+
  componentDidMount() {
      axios.get(API + DEFAULT_QUERY)
       .then(result => this.setState({
@@ -48,9 +51,21 @@
       const apiUrl = `API KEY`;
       fetch(apiUrl)
         .then((res) => res.json())
-        .then((repos) => {
-          setAppState({ loading: false, repos: repos });
+        .then((data) => {
+          setState({ state: data });
         });
-    }, [setAppState]);
+    }, [setState]);
 
+```
+- ## 4. Fetch in react hooks with axios
+
+```jsx
+useEffect(() => {
+    setState({ });
+    const apiUrl = 'https://api.github.com/users/hacktivist123/repos';
+    axios.get(apiUrl).then((repos) => {
+      const data = repos.data;
+      setState({ repos: data });
+    });
+  }, [setState]);
 ```
