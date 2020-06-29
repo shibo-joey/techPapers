@@ -21,7 +21,14 @@
 ```
 
 - ## 2. Fetch in componentDidMount with axios
-
+    axios.request(config)
+    axios.get(url[, config])
+    axios.delete(url[, config])
+    axios.head(url[, config])
+    axios.options(url[, config])
+    axios.post(url[, data[, config]])
+    axios.put(url[, data[, config]])
+    axios.patch(url[, data[, config]])
 ```jsx
  componentDidMount() {
      axios.get(API + DEFAULT_QUERY)
