@@ -20,4 +20,17 @@
 
 
 # Monolithic and Microservice Architecture
+  ### Monolithic
   - Monolithic does not mean single machine
+  - Hard to explain to new team member
+  - Hard to deploy
+  - Too much responsibililty on each server
+  
+  
+  ### Microservice
+  - Easy to scale
+  - Easy for new member
+  - parallel developing is more easy
+  - Need a good architecture
+  
+  
