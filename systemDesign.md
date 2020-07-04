@@ -1,9 +1,13 @@
 # Scalability
-  1. Buy more mechine - Horizontal scaling
+
+  ### Buy more mechine - Horizontal scaling
+  - Load Banlancing required
+  - Data inconsistency
   
-  2. Buy more powerful mechine - Vertical scaling
-
-
+  ###  Buy more powerful mechine - Vertical scaling
+  - No Load Banlancing required
+  - Data consistent
+  
 # Load Balancing
 
 
