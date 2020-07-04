@@ -29,8 +29,19 @@
   
   ### Microservice
   - Easy to scale
-  - Easy for new member
+  - Easy for new team member
   - parallel developing is more easy
   - Need a good architecture
   
+  
+  
+ # Database Sharding
+ 
+  ## Horizontal Partitioning 
+  ### Sharding
+  1. Jonis
+  2. Memcached
+  3. Fixed number of shards
+  
+  ## vertical Partitioning 
   
