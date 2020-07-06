@@ -5,7 +5,17 @@
 # Store
 
 - hold the state of your application.
+- Allows access to state via getState()
+- Allows state to be updated via dispatch(action)
+- Registers listeners via subscribe(Listener)
 
+```javascript
+import redux from "redux"
+const createStore = redux.createStore
+
+const store = createStore(reducer)
+
+```
 
 # Action
 
