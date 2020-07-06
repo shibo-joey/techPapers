@@ -33,6 +33,7 @@ const initialState = {
 const reducer = (state=initialState, action) => {
   switch(action.type){
     case ACTION_NAME: return{
+      ...state,
       numState: state.numState + 1
     }
     default: return state
