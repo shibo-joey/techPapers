@@ -11,7 +11,7 @@
 
 - Describe the change in the state of the application.
 
-```jsx
+```javascript
 function actionCreator(){
   return  {
       type: ACTION_NAME
@@ -21,9 +21,24 @@ function actionCreator(){
 
 # Reducer
 
-- Ties the store and actions togather.
+- Specify how the app's state changes in response to actions sent to store.
 
+```javascript
+// (previousState, action) => newState
 
+const initialState = {
+  numState: 0
+}
+
+const reducer = (state=initialState, action) => {
+  switch(action.type){
+    case ACTION_NAME: return{
+      numState: state.numState + 1
+    }
+    default: return state
+  }
+}
+```
 
 
 # Principles
