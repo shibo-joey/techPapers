@@ -11,6 +11,13 @@
 
 - Describe the change in the state of the application.
 
+```jsx
+function actionCreator(){
+  return  {
+      type: ACTION_NAME
+  }
+}
+```
 
 # Reducer
 
