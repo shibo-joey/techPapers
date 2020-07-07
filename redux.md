@@ -10,9 +10,23 @@
 
 ```javascript
 import redux from "redux"
-const createStore = redux.createStore
+import { createStore } from 'redux'
 
 const store = createStore(reducer)
+
+```
+- Combine multiple reducers
+
+```javascript
+import redux,{ createStore } from "redux"
+import { combineReducers } from 'redux'
+
+const rootRducer = combineReducers({
+  name1:  reducer1,
+  name2:  reducer2
+})
+
+const store = createStore(rootRducer)
 
 ```
 
