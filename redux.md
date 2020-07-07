@@ -3,7 +3,7 @@
 
 # Store
 
-- hold the state of your application.
+- Hold the state of your application.
 - Allows access to state via getState()
 - Allows state to be updated via dispatch(action)
 - Registers listeners via subscribe(Listener)
