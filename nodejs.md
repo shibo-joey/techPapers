@@ -39,6 +39,16 @@ run.js
  Init:
  ```javascript
  const express = require('express')
+ const app = express()
+ 
+ - app.get()
+ app.get('/endpoint',(req,res) => {
+ 
+ })
+ 
+ app.post()
+ app.put()
+ app.delete()
  ```
     
     
