@@ -2,7 +2,7 @@
 
 ## Module
 
-- How to export functions through module:
+### How to export functions through module:
 run.js
 ```javascript
   function run(){
@@ -16,7 +16,7 @@ run.js
   module.exports = run
  ```
  
- - How to load a module through other files:
+ ### How to load a module through other files:
  app.js
  
  ```javascript
@@ -30,7 +30,7 @@ run.js
   run()
  ```
  
- - Default module api we can use:
+ ### Default module api we can use:
   https://nodejs.org/en/docs/
  
     
