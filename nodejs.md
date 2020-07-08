@@ -59,4 +59,9 @@ run.js
   const port = process.env.PORT || 3000;
   app.listen(port, () => console.log("I am listening"))
   
+  - To set a environment variable:
+  1. win: set PORT=5000
+  2. mac: export PORT=5000
+  
+  
   
