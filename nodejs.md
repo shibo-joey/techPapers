@@ -41,12 +41,23 @@ run.js
  const express = require('express')
  const app = express()
  
- - app.get()
- app.get('/endpoint',(req,res) => {
+ app.use(express.json())
  
+ - app.get()
+ app.get('/endpoint', (req,res) => {
+  res.send("Hi")
  })
  
- app.post()
+ - app.post()
+  app.post('/endpoint', (req,res) => {
+    cosnt newPost = {
+       id: postx
+       name: postName
+    }
+    data.push(newPost);
+    res.send(course)
+ })
+ 
  app.put()
  app.delete()
  ```
@@ -63,5 +74,24 @@ run.js
   1. win: set PORT=5000
   2. mac: export PORT=5000
   
+  ## Dynamic routing parameters
   
+   ```javascript
+    app.get('/endpoint/:id',(req,res) => {
+      res.send(req.params.id);
+      // go to "/endpoint/1" you can see "1"
+    })
+   ```
+   
+  ## Input validation
+  ```javascript
+  app.post('/endpoint', (req,res) => {
+    cosnt newPost = {
+       id: postx
+       name: postName
+    }
+    data.push(newPost);
+    res.send(course)
+ })
+  ```
   
