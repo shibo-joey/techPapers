@@ -84,14 +84,22 @@ run.js
    ```
    
   ## Input validation
+  - we can use simple validation logic or use lib like joi
+  
   ```javascript
   app.post('/endpoint', (req,res) => {
+    if(!req.body.name || req.body.name.length < 3){
+      res.status(400).send("Length is required to 3 charactor minimum")
+      return
+    }
+  
     cosnt newPost = {
        id: postx
        name: postName
     }
     data.push(newPost);
     res.send(course)
- })
+    })
   ```
+  
   
