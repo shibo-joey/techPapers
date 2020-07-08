@@ -50,5 +50,7 @@ run.js
  app.put()
  app.delete()
  ```
-    
+ 
+- Auto update for the server tool:
+  nodemon
     
