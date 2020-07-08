@@ -53,4 +53,10 @@ run.js
  
 - Auto update for the server tool:
   nodemon
-    
+  
+  ## Environment variavles
+  
+  const port = process.env.PORT || 3000;
+  app.listen(port, () => console.log("I am listening"))
+  
+  
