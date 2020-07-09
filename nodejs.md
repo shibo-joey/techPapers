@@ -43,11 +43,13 @@ run.js
  
  app.use(express.json())
  
+ //get the data
  - app.get()
  app.get('/endpoint', (req,res) => {
   res.send("Hi")
  })
  
+  //add the data
  - app.post()
   app.post('/endpoint', (req,res) => {
     cosnt newPost = {
@@ -58,23 +60,60 @@ run.js
     res.send(course)
  })
  
- app.put()
- app.delete()
+ //update the data
+ - app.put('/endpoint/:id', (req,res) => {
+ 
+ //if id not existing, return 404
+    const result = data.find(c => c.id ===  parseInt(req.params.id))
+    if(!result) {
+    res.status(404).send("The data with the id was not found")
+    return
+    }
+    
+ //validate
+   const schema ={
+        name: Joi.string().min(3).require()
+      }
+      const result = Joi.validate(req.body, schema);
+   if (result.error){
+      res.status(400).send(result.error)
+      return
+    }
+    
+ //update course
+    data.name = req.body.name
+    res.send(data)
+   })
+ 
+ 
+ //delete data
+ - app.delete('/endpoint/:id', (req,res) => {
+    //if id not existing, return 404
+    const result = data.find(c => c.id ===  parseInt(req.params.id))
+    if(!result) res.status(404).send("The data with the id was not found")
+    res.send(result)
+   
+    
+    //delete course
+   
+   })
  ```
  
 - Auto update for the server tool:
   nodemon
   
-  ## Environment variavles
+## Environment variavles
   
+  ```javascript
   const port = process.env.PORT || 3000;
   app.listen(port, () => console.log("I am listening"))
+  ```
   
   - To set a environment variable:
   1. win: set PORT=5000
   2. mac: export PORT=5000
   
-  ## Dynamic routing parameters
+## Dynamic routing parameters
   
    ```javascript
     app.get('/endpoint/:id',(req,res) => {
@@ -83,7 +122,7 @@ run.js
     })
    ```
    
-  ## Input validation
+## Input validation
   - we can use simple validation logic or use lib like joi
   
   ```javascript
@@ -101,5 +140,39 @@ run.js
     res.send(course)
     })
   ```
+  
+  - Joi
+  ```javascript
+  const Joi = require("joi")
+  
+  //define a schema
+  app.post('/endpoint', (req,res) => {
+    const schema ={
+      name: Joi.string().min(3).require()
+    }
+    const result = Joi.validate(req.body, schema);
+
+    if (result.error){
+      res.status(400).send(result.error)
+      return
+    }
+   }
+  
+  ```
+  - If we have a lot of request using Jio, I suggest create a function model for joi
+  
+  ```javascript
+  function validation(data){
+    const schema ={
+      name: Joi.string().min(3).require()
+    }
+    return Joi.validate(data, schema);
+  }
+  
+  //And you can use this validation in other request
+    const result = validation(req.body)
+    
+  ```
+  
   
   
