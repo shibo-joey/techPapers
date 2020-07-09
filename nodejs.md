@@ -42,14 +42,18 @@ run.js
  const app = express()
  
  app.use(express.json())
+ ```
  
- //get the data
+ get the data
+ ```javascript
  - app.get()
  app.get('/endpoint', (req,res) => {
   res.send("Hi")
  })
+ ```
  
-  //add the data
+ add the data
+ ```javascript
  - app.post()
   app.post('/endpoint', (req,res) => {
     cosnt newPost = {
@@ -59,18 +63,20 @@ run.js
     data.push(newPost);
     res.send(course)
  })
+ ```
  
- //update the data
+  update the data
+  ```javascript
  - app.put('/endpoint/:id', (req,res) => {
  
- //if id not existing, return 404
+   //if id not existing, return 404
     const result = data.find(c => c.id ===  parseInt(req.params.id))
     if(!result) {
     res.status(404).send("The data with the id was not found")
     return
     }
     
- //validate
+   //validate
    const schema ={
         name: Joi.string().min(3).require()
       }
@@ -80,22 +86,26 @@ run.js
       return
     }
     
- //update course
+  //update course
     data.name = req.body.name
     res.send(data)
    })
  
+ ```
  
- //delete data
+   delete data
+ ```javascript
  - app.delete('/endpoint/:id', (req,res) => {
     //if id not existing, return 404
     const result = data.find(c => c.id ===  parseInt(req.params.id))
-    if(!result) res.status(404).send("The data with the id was not found")
-    res.send(result)
+    if(!result) return res.status(404).send("The data with the id was not found")
+    
    
     
-    //delete course
-   
+  //delete course
+    const index = data.indexOf(result)
+    data.splice(index, 1)
+    res.send(result)
    })
  ```
  
