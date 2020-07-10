@@ -184,5 +184,24 @@ run.js
     
   ```
   
+  ## middleware function
   
+  - We can create a middleware function in other file and use that function in middleware
   
+  server.js
+  ```javascript
+  function server(req,res,next){
+    console.log("loadind)
+    next()
+  }
+  
+  module.exports = server
+  ```
+  
+  - Use in middleware app.js
+  
+   ```javascript
+  const server = require("./sercer.js")
+  
+  app.use(server)
+  ```
