@@ -244,8 +244,8 @@ run.js
   const express = require('express')
   const server = express.Router()
   
-  server.get('...')
-  
+  server.get('/')
+  // The api key is set in index.js. The location here is relative
   module.exports = server
   ```
   
