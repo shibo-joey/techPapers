@@ -209,3 +209,18 @@ run.js
   https://expressjs.com/en/resources/middleware.html
   
   
+  ## managing configuration
+  
+  - npm rc
+  - npm config
+  
+  default.json:
+  
+  ```json
+  {
+  ""
+  }
+  ```
+  
+  
+  
