@@ -218,9 +218,20 @@ run.js
   
   ```json
   {
-  ""
+  "..."
   }
   ```
   
+   ## debugging
+   
+   - debug package:
+   npm i debug
+   
+  implement in environment viarable
   
+  export/set DEBUG=app:startup
+  ```jsvascript
+  const debug = require('debug')('app:startup')
   
+  debug("This works")
+  ```
