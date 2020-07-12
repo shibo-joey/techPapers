@@ -235,3 +235,24 @@ run.js
   
   debug("This works")
   ```
+  ## structuring
+  
+  In other file, you can use route to seperate the router process
+  
+  server.js
+  ```javascript
+  const express = require('express')
+  const server = express.Router()
+  
+  server.get('...')
+  
+  module.exports = server
+  ```
+  
+  In the index.js you can use the router
+  
+    ```javascript
+  const server = require('./server.js')
+  
+  app.use('API ROUTE', server)
+  ```
