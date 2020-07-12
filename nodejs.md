@@ -251,7 +251,7 @@ run.js
   
   In the index.js you can use the router
   
-    ```javascript
+  ```javascript
   const server = require('./server.js')
   
   app.use('API ROUTE', server)
