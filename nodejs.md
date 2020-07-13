@@ -260,7 +260,8 @@ run.js
 ## Asynchronize 
 
 - callbacks
-  
+
+  ```javascript
   getName(1, function(data){
     console.log(data)
     //return {id : id, name: "David"}
@@ -269,7 +270,11 @@ run.js
   function getName(id, callback){
     callback({id : id, name: "David"})
   }
-
+  ```
+ problems:
+ callback hell with the increasing of callback functions
+ 
+ 
 - promises
 
 - Async/await
