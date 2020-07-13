@@ -235,7 +235,7 @@ run.js
   
   debug("This works")
   ```
-  ## structuring
+  ## Structuring
   
   In other file, you can use route to seperate the router process
   
@@ -256,3 +256,20 @@ run.js
   
   app.use('API ROUTE', server)
   ```
+  
+## Asynchronize 
+
+- callbacks
+  
+  getName(1, function(data){
+    console.log(data)
+    //return {id : id, name: "David"}
+  })
+  
+  function getName(id, callback){
+    callback({id : id, name: "David"})
+  }
+
+- promises
+
+- Async/await
