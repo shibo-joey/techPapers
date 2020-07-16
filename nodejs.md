@@ -184,7 +184,7 @@ run.js
     
   ```
   
-  ## middleware function
+  ## Middleware function
   
   - We can create a middleware function in other file and use that function in middleware
   
@@ -209,7 +209,7 @@ run.js
   https://expressjs.com/en/resources/middleware.html
   
   
-  ## managing configuration
+  ## Managing configuration
   
   - npm rc
   - npm config
@@ -222,7 +222,7 @@ run.js
   }
   ```
   
-   ## debugging
+   ## Debugging
    
    - debug package:
    npm i debug
