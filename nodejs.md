@@ -316,3 +316,12 @@ nin (not in)
 ```javascript
 obj.find({price: {$gte:10, $lte:20}})
 ```
+- Logic operators
+or
+and
+
+```javascript
+obj.or(
+[{...},{...}]
+)
+```
