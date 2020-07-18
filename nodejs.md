@@ -300,7 +300,7 @@ const newModel = new modelName({
 ...
 })
 //save the data
-const id = await newModel.save()
+const obj = await newModel.save()
 ```
 - operators
 eq (equal)
@@ -311,3 +311,8 @@ lt (less than)
 lte (less than or equal to)
 in
 nin (not in)
+
+
+```javascript
+obj.find({price: {$gte:10, $lte:20}})
+```
