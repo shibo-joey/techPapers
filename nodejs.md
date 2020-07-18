@@ -281,5 +281,23 @@ run.js
 
 ## MongoDB
 
--mongoose
+- mongoose
+```javascript
+const mongoose = require('mongoose')
+mongoose.connect(MONGOOSE API')
+.then(() => {})
+.catch(error)
+```
+
+- Schema types
+String, Number, Date, Buffer, Boolean, ObjectID, Array
+
+- Model
+```javascript
+const modelName = mongoose.model('modelName', courseSchema)
+
+const newModel = new modelName({
+...
+})
+```
 
