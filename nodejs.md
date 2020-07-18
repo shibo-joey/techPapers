@@ -299,5 +299,15 @@ const modelName = mongoose.model('modelName', courseSchema)
 const newModel = new modelName({
 ...
 })
+//save the data
+const id = await newModel.save()
 ```
-
+- operators
+eq (equal)
+ne (not equal)
+gt (greater than)
+gte (greater than or equal to)
+lt (less than)
+lte (less than or equal to)
+in
+nin (not in)
