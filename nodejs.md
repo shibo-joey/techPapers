@@ -325,3 +325,50 @@ obj.or(
 [{...},{...}]
 )
 ```
+## Validation
+
+- mongoose validation
+
+```javascript
+new mongoose.Schema({
+ name: { type: String, required: true }
+})
+```
+- mongoose built in validator
+
+Strings: minlength, maxlength, match, enum
+- Numbers: min, max
+- Dates: min, max
+- All types: required
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
