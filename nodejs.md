@@ -341,10 +341,30 @@ Strings: minlength, maxlength, match, enum
 - Dates: min, max
 - All types: required
 
+- customer validator
 
+```javascript
+tags: [
+ type: Array,
+ validate: {
+ validator: function(v) { return v && v.length > 0; },
+ message: ‘A course should have at least 1 tag.’
+ }
+]
+```
+- If you need to talk to a database or a remote service to perform the validation,
+you need to create an async validator:
 
+```javascript
+ validate: {
+ isAsync: true
+ validator: function(v, callback) {
+ // Do the validation, when the result is ready, call the callback
+ callback(isValid);
+ }
+ }
 
-
+```
 
 
 
