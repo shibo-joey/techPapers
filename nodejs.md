@@ -367,6 +367,11 @@ you need to create an async validator:
 ```
 
 
+## Transaction
+
+- Two phase commits
+
+- mongo lib 
 
 
 
