@@ -45,3 +45,7 @@
   
   ## vertical Partitioning 
   
+  
+  ## Image store
+  
+  File vs Blog(Binary large object)
