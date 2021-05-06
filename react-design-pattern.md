@@ -12,3 +12,7 @@
 - Jest
 - Enzyme
 - React-testing-lib
+
+# State management
+- React-redux
+- Redux-toolkit
