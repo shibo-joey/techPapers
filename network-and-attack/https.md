@@ -5,11 +5,11 @@ When you enter a website URL that starts with https://, your browser initiates a
 2. Server Responds with a Digital Certificate
 The server presents an SSL/TLS certificate issued by a Certificate Authority (CA). This certificate contains:
 
-The server's public key
-The website's domain name
-The certificate's expiration date
-The CA's digital signature
-Encryption method
+- The server's public key
+- The website's domain name
+- The certificate's expiration date
+- The CA's digital signature
+- Encryption method
 
 3. Certificate Validation
 The client (browser) verifies the certificate:
