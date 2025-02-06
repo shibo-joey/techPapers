@@ -42,9 +42,10 @@ throttlePromisesWithWorkers(tasks, 3).then((results) =>
 
 ```javascript
 function myPromiseAll(promises){
-  if(!promises || !Array.isArray(promises)) reject()
-  if(promises.length === 0) resolve([])
   return new Promise((resolve,reject) => {
+    if(!promises || !Array.isArray(promises)) reject()
+    if(promises.length === 0) resolve([])
+
     let result = []
     let count = 0
     
