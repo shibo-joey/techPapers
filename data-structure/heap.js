@@ -1,72 +1,78 @@
-class MinHeap {
+// Min Heap
+class PriorityQueue {
   constructor() {
     this.heap = [];
   }
 
-  // Get the index of the parent node
-  parentIndex(index) {
-    return Math.floor((index - 1) / 2);
-  }
-  // Swap two elements in the heap
+  // Get parent and children indexes
+  getParentIndex(i) { return Math.floor((i - 1) / 2); }
+  getLeftChildIndex(i) { return 2 * i + 1; }
+  getRightChildIndex(i) { return 2 * i + 2; }
+
+  // Swap helper
   swap(i, j) {
     [this.heap[i], this.heap[j]] = [this.heap[j], this.heap[i]];
   }
 
-  // Insert a new value into the heap
-  insert(value) {
-    this.heap.push(value);
-    this.heapifyUp();
+  // Insert an element into the priority queue
+  enqueue(value, priority) {
+    this.heap.push({ value, priority });
+    this.bubbleUp();
   }
 
-  // Heapify up to maintain the min-heap property
-  heapifyUp() {
+  bubbleUp() {
     let index = this.heap.length - 1;
-    while (index > 0 && this.heap[index] < this.heap[this.parentIndex(index)]) {
-      this.swap(index, this.parentIndex(index));
-      index = this.parentIndex(index);
+    while (index > 0) {
+      let parentIndex = this.getParentIndex(index);
+      if (this.heap[parentIndex].priority <= this.heap[index].priority) break;
+      this.swap(parentIndex, index);
+      index = parentIndex;
     }
   }
 
-  // Get the minimum element (root of the heap)
-  getMin() {
-    return this.heap[0] || null;
-  }
-}
+  // Remove and return the highest priority element
+  dequeue() {
+    if (this.heap.length === 0) return null;
+    if (this.heap.length === 1) return this.heap.pop();
 
-######################################### 
-
-class MaxHeap {
-  constructor() {
-    this.heap = [];
+    const root = this.heap[0];
+    this.heap[0] = this.heap.pop();
+    this.bubbleDown();
+    return root;
   }
 
-  // Get the index of the parent node
-  parentIndex(index) {
-    return Math.floor((index - 1) / 2);
-  }
+  bubbleDown() {
+    let index = 0;
+    while (true) {
+      let leftIndex = this.getLeftChildIndex(index);
+      let rightIndex = this.getRightChildIndex(index);
+      let smallest = index;
 
-  // Swap two elements in the heap
-  swap(i, j) {
-    [this.heap[i], this.heap[j]] = [this.heap[j], this.heap[i]];
-  }
+      if (leftIndex < this.heap.length && this.heap[leftIndex].priority < this.heap[smallest].priority) {
+        smallest = leftIndex;
+      }
+      if (rightIndex < this.heap.length && this.heap[rightIndex].priority < this.heap[smallest].priority) {
+        smallest = rightIndex;
+      }
+      if (smallest === index) break;
 
-  // Insert a new value into the heap
-  insert(value) {
-    this.heap.push(value);
-    this.heapifyUp();
-  }
-
-  // Heapify up to maintain the max-heap property
-  heapifyUp() {
-    let index = this.heap.length - 1;
-    while (index > 0 && this.heap[index] > this.heap[this.parentIndex(index)]) {
-      this.swap(index, this.parentIndex(index));
-      index = this.parentIndex(index);
+      this.swap(index, smallest);
+      index = smallest;
     }
   }
 
-  // Get the maximum element (root of the heap)
-  getMax() {
-    return this.heap[0] || null;
+  // Check the highest priority element
+  peek() {
+    return this.heap.length ? this.heap[0] : null;
+  }
+
+  // Check if the queue is empty
+  isEmpty() {
+    return this.heap.length === 0;
+  }
+
+  // Get queue size
+  size() {
+    return this.heap.length;
   }
 }
