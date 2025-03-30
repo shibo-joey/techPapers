@@ -2,37 +2,40 @@
 
 ```javascript
 class EventEmitter {
-  constructor(){
-    this.events = new Map()
+  constructor() {
+    this.events = {};
   }
 
-  on(event, listener){
-    if(!this.events.has(event)){
-      this.events.set(event, new Set())
+  // 订阅事件
+  on(event, listener) {
+    if (!this.events[event]) {
+      this.events[event] = [];
     }
-    this.events.get(event).add(listener)
+    this.events[event].push(listener);
   }
 
-  off(event, listener){
-    if(this.events.get(event)){
-      this.events.get(event).delete(listener)
-    }
+  // 订阅一次，触发后移除
+  once(event, listener) {
+    const onceWrapper = (...args) => {
+      listener(...args);
+      this.off(event, onceWrapper);
+    };
+    this.on(event, onceWrapper);
   }
 
-  emit(event, ...args){
-    if(this.events.get(event)){
-        this.events.get(event).forEach(listener => listener(...args))
-    }
+  // 取消订阅
+  off(event, listener) {
+    if (!this.events[event]) return;
+    this.events[event] = this.events[event].filter(l => l !== listener);
   }
 
-  once(event, listener){
-    if(!this.events.get(event)){
-      this.events.set(event, new Set())
-    }
-    this.events.get(event).add(listener)
-    this.off(event, listener)
-    }
+  // 触发事件
+  emit(event, ...args) {
+    if (!this.events[event]) return;
+    this.events[event].forEach(listener => listener(...args));
   }
+}
+
 
 // Example usage:
 const emitter = new EventEmitter();
