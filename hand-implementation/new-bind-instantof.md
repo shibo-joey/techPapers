@@ -8,8 +8,11 @@ This document includes custom implementations of core JavaScript features: `new`
 
 ```js
 function myNew(Constructor, ...args) {
+  // 1. 创建一个新对象，原型指向构造函数的 prototype
   const obj = Object.create(Constructor.prototype);
+  // 2. 执行构造函数，绑定 this 到新对象上
   const result = Constructor.apply(obj, args);
+  // 3. 如果构造函数返回的是对象类型，就返回它；否则返回新对象
   return (typeof result === 'object' && result !== null) ? result : obj;
 }
 ```
