@@ -69,3 +69,52 @@ const p3 = new Promise((resolve) => setTimeout(() => resolve(3), 1000));
 
 myPromiseAll([p1, p2, p3]).then(console.log).catch(console.error);
   ```
+
+
+
+# Promise.race
+
+```javascript
+function myPromiseRace(promises) {
+  return new Promise((resolve, reject) => {
+    promises.forEach(p => {
+      Promise.resolve(p).then(resolve, reject)
+    })
+  })
+}
+
+  ```
+
+
+# Promise.allSettled
+
+```javascript
+function myPromiseAllSettled(promises) {
+  return new Promise(resolve => {
+    const results = []
+    let completed = 0
+
+    promises.forEach((p, i) => {
+      Promise.resolve(p)
+        .then(value => {
+          results[i] = { status: 'fulfilled', value }
+        })
+        .catch(reason => {
+          results[i] = { status: 'rejected', reason }
+        })
+        .finally(() => {
+          completed++
+          if (completed === promises.length) {
+            resolve(results)
+          }
+        })
+    })
+
+    if (promises.length === 0) {
+      resolve([])
+    }
+  })
+}
+
+
+  ```
