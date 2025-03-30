@@ -34,7 +34,9 @@ console.log(p instanceof Person); // true
 
 ```js
 function myBind(fn, context, ...boundArgs) {
+  // Return a new function that will call 'fn' with the given context
   return function (...args) {
+    // Combine bound arguments with the new arguments and apply them
     return fn.apply(context, [...boundArgs, ...args]);
   };
 }
@@ -55,16 +57,22 @@ console.log(sayHiToTom()); // Hi, Tom
 ## ✅ `myInstanceof` — Custom `instanceof` Operator
 
 ```js
-function myInstanceof(obj, Constructor) {
   if (typeof obj !== 'object' || obj === null) return false;
 
+  // Get the prototype of the object
   let proto = Object.getPrototypeOf(obj);
   const prototype = Constructor.prototype;
 
+  // Traverse the prototype chain
   while (proto) {
+    // If the constructor's prototype is found in the chain, return true
     if (proto === prototype) return true;
+
+    // Move up the prototype chain
     proto = Object.getPrototypeOf(proto);
   }
+
+  // If no match found, return false
   return false;
 }
 ```
