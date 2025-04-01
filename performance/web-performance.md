@@ -40,12 +40,15 @@ This guide covers practical strategies to improve key web performance metrics:
 - **Avoid large JavaScript bundles** on first load.
 ---
 🚀 Resource Loading Attribute Comparison
-Attribute	Tag	Purpose	When It Loads	When It Runs/Applies	Execution Order	Notes
-defer	<script>	Loads script async, runs after DOM parsed	In parallel	After HTML parsed	✅ Yes	Use for scripts that depend on DOM
-async	<script>	Loads and runs script ASAP	In parallel	Immediately after load	❌ No	Best for independent scripts
-preload	<link>	Fetch resource early for current page	Immediately	Depends on how used	N/A	Must include as="script", as="style", etc.
-prefetch	<link>	Fetch resource for future navigation	Low priority	Later, if used	N/A	Good for next-page scripts/assets
-nomodule	<script>	Fallback for non-module browsers	If modules not supported	When loaded	❌ No	Legacy support only
+### 🚀 Resource Loading Attribute Comparison
+
+| Attribute      | Tag                | Purpose                                     | When It Loads       | When It Runs/Applies      | Execution Order | Notes                                                  |
+|----------------|--------------------|---------------------------------------------|----------------------|----------------------------|------------------|--------------------------------------------------------|
+| `defer`        | `<script>`         | Load script async, run after DOM parsed     | In parallel          | After HTML parsed          | ✅ Yes           | Use for scripts that need the DOM                      |
+| `async`        | `<script>`         | Load and run script ASAP                    | In parallel          | Immediately after load     | ❌ No            | Best for independent scripts                           |
+| `preload`      | `<link>`           | Pre-fetch resource for current page         | Immediately          | When used (e.g., by browser)| N/A              | Must specify `as="script"`, `as="style"`, etc.         |
+| `prefetch`     | `<link>`           | Pre-fetch for **future navigation**         | Low priority         | Later (future use)         | N/A              | Great for next-page assets                             |
+
 
 ## 🏗️ 3. LCP (Largest Contentful Paint)
 **Goal**: Quickly load the biggest visible element (hero image, heading, etc).
