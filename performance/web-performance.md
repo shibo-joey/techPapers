@@ -38,6 +38,7 @@ This guide covers practical strategies to improve key web performance metrics:
   <link rel="preload" href="/fonts/your-font.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   ```
 - **Avoid large JavaScript bundles** on first load.
+---
 🚀 Resource Loading Attribute Comparison
 Attribute	Tag	Purpose	When It Loads	When It Runs/Applies	Execution Order	Notes
 defer	<script>	Loads script async, runs after DOM parsed	In parallel	After HTML parsed	✅ Yes	Use for scripts that depend on DOM
@@ -45,7 +46,6 @@ async	<script>	Loads and runs script ASAP	In parallel	Immediately after load	❌
 preload	<link>	Fetch resource early for current page	Immediately	Depends on how used	N/A	Must include as="script", as="style", etc.
 prefetch	<link>	Fetch resource for future navigation	Low priority	Later, if used	N/A	Good for next-page scripts/assets
 nomodule	<script>	Fallback for non-module browsers	If modules not supported	When loaded	❌ No	Legacy support only
----
 
 ## 🏗️ 3. LCP (Largest Contentful Paint)
 **Goal**: Quickly load the biggest visible element (hero image, heading, etc).
