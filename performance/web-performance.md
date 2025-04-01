@@ -40,7 +40,6 @@ This guide covers practical strategies to improve key web performance metrics:
 - **Avoid large JavaScript bundles** on first load.
 ---
 🚀 Resource Loading Attribute Comparison
-### 🚀 Resource Loading Attribute Comparison
 
 | Attribute      | Tag                | Purpose                                     | When It Loads       | When It Runs/Applies      | Execution Order | Notes                                                  |
 |----------------|--------------------|---------------------------------------------|----------------------|----------------------------|------------------|--------------------------------------------------------|
