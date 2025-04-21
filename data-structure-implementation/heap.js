@@ -1,4 +1,3 @@
-// Min Heap
 class Heap {
     constructor(compare) {
         this.data = [];
