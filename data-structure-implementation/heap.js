@@ -1,78 +1,57 @@
 // Min Heap
-class PriorityQueue {
-  constructor() {
-    this.heap = [];
-  }
-
-  // Get parent and children indexes
-  getParentIndex(i) { return Math.floor((i - 1) / 2); }
-  getLeftChildIndex(i) { return 2 * i + 1; }
-  getRightChildIndex(i) { return 2 * i + 2; }
-
-  // Swap helper
-  swap(i, j) {
-    [this.heap[i], this.heap[j]] = [this.heap[j], this.heap[i]];
-  }
-
-  // Insert an element into the priority queue
-  enqueue(value, priority) {
-    this.heap.push({ value, priority });
-    this.bubbleUp();
-  }
-
-  bubbleUp() {
-    let index = this.heap.length - 1;
-    while (index > 0) {
-      let parentIndex = this.getParentIndex(index);
-      if (this.heap[parentIndex].priority <= this.heap[index].priority) break;
-      this.swap(parentIndex, index);
-      index = parentIndex;
+class Heap {
+    constructor(compare) {
+        this.data = [];
+        this.compare = compare;
     }
-  }
 
-  // Remove and return the highest priority element
-  dequeue() {
-    if (this.heap.length === 0) return null;
-    if (this.heap.length === 1) return this.heap.pop();
-
-    const root = this.heap[0];
-    this.heap[0] = this.heap.pop();
-    this.bubbleDown();
-    return root;
-  }
-
-  bubbleDown() {
-    let index = 0;
-    while (true) {
-      let leftIndex = this.getLeftChildIndex(index);
-      let rightIndex = this.getRightChildIndex(index);
-      let smallest = index;
-
-      if (leftIndex < this.heap.length && this.heap[leftIndex].priority < this.heap[smallest].priority) {
-        smallest = leftIndex;
-      }
-      if (rightIndex < this.heap.length && this.heap[rightIndex].priority < this.heap[smallest].priority) {
-        smallest = rightIndex;
-      }
-      if (smallest === index) break;
-
-      this.swap(index, smallest);
-      index = smallest;
+    size() {
+        return this.data.length;
     }
-  }
 
-  // Check the highest priority element
-  peek() {
-    return this.heap.length ? this.heap[0] : null;
-  }
+    peek() {
+        return this.data[0];
+    }
 
-  // Check if the queue is empty
-  isEmpty() {
-    return this.heap.length === 0;
-  }
+    push(val) {
+        this.data.push(val);
+        this._siftUp(this.data.length - 1);
+    }
 
-  // Get queue size
-  size() {
-    return this.heap.length;
-  }
+    pop() {
+        if (this.size() === 1) return this.data.pop();
+        const top = this.peek();
+        this.data[0] = this.data.pop();
+        this._siftDown(0);
+        return top;
+    }
+
+    _siftUp(i) {
+        let parent = Math.floor((i - 1) / 2);
+        while (i > 0 && this.compare(this.data[i], this.data[parent]) < 0) {
+            [this.data[i], this.data[parent]] = [this.data[parent], this.data[i]];
+            i = parent;
+            parent = Math.floor((i - 1) / 2);
+        }
+    }
+
+    _siftDown(i) {
+        let n = this.size(), left, right, smallest;
+        while (true) {
+            left = 2 * i + 1;
+            right = 2 * i + 2;
+            smallest = i;
+
+            if (left < n && this.compare(this.data[left], this.data[smallest]) < 0) smallest = left;
+            if (right < n && this.compare(this.data[right], this.data[smallest]) < 0) smallest = right;
+
+            if (smallest !== i) {
+                [this.data[i], this.data[smallest]] = [this.data[smallest], this.data[i]];
+                i = smallest;
+            } else break;
+        }
+    }
 }
+
+let small = new Heap((a, b) => b - a); // max-heap
+let large = new Heap((a, b) => a - b); // min-heap
